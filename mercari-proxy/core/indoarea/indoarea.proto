@@ -1,0 +1,55 @@
+syntax = "proto3";
+package indoarea;
+
+option go_package = "indoarea";
+
+
+service Api {
+    rpc GetProvinces(Void) returns (GetProvincesResponse){}
+    rpc GetCities(Void) returns (GetCitiesResponse){}
+    rpc GetDistricts(Void) returns (GetDistrictsResponse){}
+    rpc GetSubDistricts(Void) returns (GetSubDistrictsResponse){}
+}
+
+
+message Void {
+}
+
+message GetProvincesResponse {
+    repeated Province provinces = 1;
+}
+
+message Province {
+    string id = 1;
+    string name = 2;
+}
+
+message GetCitiesResponse {
+    repeated City cities = 1;
+}
+
+message City {
+    string id = 1;
+    string name = 2;
+    string province_name = 3;
+}
+
+message GetDistrictsResponse {
+    repeated District districts = 1;
+}
+
+message District {
+    string id = 1;
+    string name = 2;
+    string city_name = 3;
+}
+
+message GetSubDistrictsResponse {
+    repeated SubDistrict SubDistricts = 1;
+}
+
+message SubDistrict {
+    string id = 1;
+    string name = 2;
+    string district_name = 3;
+}
